@@ -9,14 +9,14 @@ The Fibonacci sequence is a sequence of numbers where:
 2. The numbers that follow are the sum of the previous TWO numbers, so  
 ``fibonacci(3) = fibonacci(2) + fibonacci(1) = 1 + 1 = 2``  
 ``fibonacci(4) = fibonacci(3) + fibonacci(2) = 2 + 1 = 3``.
-
+0 1 1 2 3 5 8 13 21 34
 ```
 TODO: Answer the following questions:
-fibonacci(5) = 
-fibonacci(6) = 
-fibonacci(7) = 
-fibonacci(8) = 
-fibonacci(9) = 
+fibonacci(5) = 5
+fibonacci(6) = 8
+fibonacci(7) = 13
+fibonacci(8) = 21
+fibonacci(9) = 34
 ```
 
 ## Basic implementation
@@ -39,15 +39,15 @@ The code version also tells you how much time does it take to complete each calc
 ```
 TODO:
 1. Explain what the code above is doing.
-A: 
+A: it is recursively adding numbers in fibonannci till it hits 0
 2. What happens if we remove the "if ... return ..." and only keep the last line?
-A: 
+A: it will go into negative numbers
 3. What is fibonacci(20)? how much time did it take to calculate that?
-A: 
+A: 1.4591e-03
 4. What is fibonacci(30)? how much time did it take to calculate that?
-A: 
+A: 8.6734e-02
 5. How much time did it take you to calculate fibonacci(40)? (this might take a while...)
-A: 
+A: 7.2 secs
 ```
 
 ## How many function calls?
@@ -55,12 +55,14 @@ A:
 Modify ``fibonacci_counting.py`` so that it does the same calculation as ``fibonacci.py``, but it also counts how many times the function ``fibonacci(n)`` had to be called. Then answer the following:
 ```
 TODO:
-1. How many function calls does fibonacci(1) take?
-2. How many function calls does fibonacci(5) take?
-3. How many function calls does fibonacci(10) take?
-4. Why is it so slow? Where does the complexity come from?
-5. Is this O(n)? is this O(2^n)? Why?
+1. How many function calls does fibonacci(1) take? 1
+2. How many function calls does fibonacci(5) take? 15
+3. How many function calls does fibonacci(10) take? 177
+4. Why is it so slow? Where does the complexity come from? It becomes slow because it exponentially rises,
+the bigger the number, you bascially repeat the past comparisons, so it rises really fast.
+5. Is this O(n)? is this O(2^n)? Why? This is definently O(2^n) because the other option is linear, while fibonacci is recurisve which goes exponentially
 6. Is this Ω(n)? Why?
+
 ```
 
 ## Memoization Optimization
@@ -69,10 +71,15 @@ Take a look at ``fibonacci_counting.py``, where memoization is used.
 ```
 TODO:
 1. How is this one different from the previous one?
+yes
 2. How much time does it take to calculate fibonacci(30)?
+4.6208e-05 seconds
 3. Why is it often faster?
+There is less comparisons, since it stores known numbers to the cache
 4. Also modify this file to count: how many times the function had to be called for fibonacci(30)?
+832040
 5. Is this O(n)? is this O(2^n)? Why?
+O(n), but isnt actually calculting, it is just grabbing values from cache stored, what if we want a number not there?
 6. Is this Ω(n)? is this Ω(2^n)? Why?
 ```
 
